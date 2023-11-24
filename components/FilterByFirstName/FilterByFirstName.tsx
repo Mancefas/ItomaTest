@@ -4,10 +4,10 @@ import { Input } from '@mantine/core';
 type FilterByFirstNameProps = {};
 
 const FilterByFirstName: React.FC<FilterByFirstNameProps> = () => {
-    const { jsonData, setChangedUserData } = useUserDataContext();
+    const { jsonData, setChangedUserData, changedUserData } = useUserDataContext();
 
     const filterByFirstNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const filteredData = jsonData.filter(user => user.profile.first_name.toLowerCase().includes(e.target.value.toLowerCase()));
+        const filteredData = changedUserData.filter(user => user.profile.first_name.toLowerCase().includes(e.target.value.toLowerCase()));
         setChangedUserData(filteredData)
   }
 

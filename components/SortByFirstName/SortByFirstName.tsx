@@ -4,11 +4,11 @@ import { Button } from "@mantine/core";
 type SortByFirstNameProps = {};
 
 const SortByFirstName: React.FC<SortByFirstNameProps>  = () => {
-    const { jsonData, setChangedUserData } = useUserDataContext();
+    const { jsonData, setChangedUserData, changedUserData } = useUserDataContext();
 
      const sortByFirstNameHandler = () => {
         // copying data to get rerender
-        const dataCopy = [...jsonData];
+        const dataCopy = [...changedUserData];
         const sortedData = dataCopy.sort((a, b) => {
             if (a.profile.first_name < b.profile.first_name) {
               return -1;

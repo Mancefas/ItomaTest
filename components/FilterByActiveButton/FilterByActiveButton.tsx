@@ -4,12 +4,12 @@ import { Button } from "@mantine/core";
 type FilterByActiveButtonProps = {};
 
 const FilterByActiveButton: React.FC<FilterByActiveButtonProps>  = () => {
-    const { jsonData, setChangedUserData } = useUserDataContext();
+    const { setChangedUserData, changedUserData } = useUserDataContext();
 
      // sort (but its more filter) by is active or not
 
      const filterByActiveHandler = () => {
-        setChangedUserData(jsonData.filter((item) => item.is_active))
+        setChangedUserData(changedUserData.filter((item) => item.is_active))
      }   
 
   return (
