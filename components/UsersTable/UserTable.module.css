@@ -1,0 +1,14 @@
+.table {
+    padding: 1rem;
+    width: 60vw;
+    margin: auto;
+}
+
+
+.card {
+    margin: auto;
+    padding: 1rem;
+    background-color: antiquewhite;
+    width: 100%;
+    text-align: center;
+}

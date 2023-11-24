@@ -1,0 +1,8 @@
+.main {
+    padding: 2rem 0;
+}
+
+.paginationBox {
+    display: flex;
+   justify-content: flex-end;
+}
