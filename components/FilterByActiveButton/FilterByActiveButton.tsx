@@ -4,20 +4,26 @@ import { Button } from "@mantine/core";
 
 type FilterByActiveButtonProps = {};
 
-const FilterByActiveButton: React.FC<FilterByActiveButtonProps>  = () => {
-    const { jsonData, setChangedUserData } = useUserDataContext();
-    const [filterActive, setFilterActive] = useState<boolean>(true);
+const FilterByActiveButton: React.FC<FilterByActiveButtonProps> = () => {
+  const { jsonData, setChangedUserData } = useUserDataContext();
+  const [filterActive, setFilterActive] = useState<boolean>(true);
 
-     // sort (but its more filter) by is active or not
+  // sort (filter) by is active or not
 
-     const filterByActiveHandler = () => {
-        setChangedUserData(jsonData.filter((item) => filterActive ? item.is_active : !item.is_active ));
-        setFilterActive((currentState) =>  !currentState);
-     }   
+  const filterByActiveHandler = () => {
+    setChangedUserData(
+      jsonData.filter((item) =>
+        filterActive ? item.is_active : !item.is_active,
+      ),
+    );
+    setFilterActive((currentState) => !currentState);
+  };
 
   return (
-    <Button onClick={filterByActiveHandler}>{`Filter ${filterActive ? '✅' : '❌'}`}</Button>
-  )
-}
+    <Button onClick={filterByActiveHandler}>{`Filter ${
+      filterActive ? "✅" : "❌"
+    }`}</Button>
+  );
+};
 
-export default FilterByActiveButton
+export default FilterByActiveButton;

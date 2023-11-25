@@ -3,29 +3,27 @@ import { Button } from "@mantine/core";
 
 type SortByLastNameProps = {};
 
-const SortByLastName: React.FC<SortByLastNameProps>  = () => {
-    const { jsonData, setChangedUserData } = useUserDataContext();
+const SortByLastName: React.FC<SortByLastNameProps> = () => {
+  const { jsonData, setChangedUserData } = useUserDataContext();
 
-     const sortByLastNameHandler = () => {
-        // copying data to get rerender
-        const dataCopy = [...jsonData];
-        
-        const sortedData = dataCopy.sort((a, b) => {
-            if (a.profile.last_name < b.profile.last_name) {
-                return -1;
-              }
-              if (a.profile.last_name > b.profile.last_name) {
-                return 1;
-              }
-              return 0;
-          })
+  const sortByLastNameHandler = () => {
+    // copying data to get rerender
+    const dataCopy = [...jsonData];
 
-        setChangedUserData(sortedData)
-     }   
+    const sortedData = dataCopy.sort((a, b) => {
+      if (a.profile.last_name < b.profile.last_name) {
+        return -1;
+      }
+      if (a.profile.last_name > b.profile.last_name) {
+        return 1;
+      }
+      return 0;
+    });
 
-  return (
-    <Button onClick={sortByLastNameHandler}>Sort</Button>
-  )
-}
+    setChangedUserData(sortedData);
+  };
 
-export default SortByLastName
+  return <Button onClick={sortByLastNameHandler}>Sort</Button>;
+};
+
+export default SortByLastName;

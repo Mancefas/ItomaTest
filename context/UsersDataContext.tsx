@@ -1,18 +1,17 @@
-'use client'
+"use client";
 
-import React, { createContext, useContext, useState } from 'react';
-import { User } from '../types/types';
-
+import React, { createContext, useContext, useState } from "react";
+import { User } from "../types/types";
 
 type UserDataContext = {
   jsonData: User[];
   setJsonData: (data: User[]) => void;
   changedUserData: User[];
   setChangedUserData: (data: User[]) => void;
-}
+};
 
 export const UserDataContext = createContext<UserDataContext>(
-  {} as UserDataContext
+  {} as UserDataContext,
 );
 
 export const UserDataContextProvider = ({
@@ -27,7 +26,7 @@ export const UserDataContextProvider = ({
     jsonData,
     setJsonData,
     changedUserData,
-    setChangedUserData
+    setChangedUserData,
   };
 
   return (
