@@ -16,22 +16,25 @@ export default function HomePage() {
 
   //setting initial data 
   useEffect(() => {
-    setJsonData(data)
+    setJsonData(data.slice((page - 1) * paginationAmount, page * paginationAmount))
     setChangedUserData(data.slice((page - 1) * paginationAmount, page * paginationAmount))
   },[]);
 
   // Paginating data
   const setPageHandler = (page: number) => {
-    setChangedUserData(jsonData.slice((page - 1) * paginationAmount, page * paginationAmount))
+    setJsonData(data.slice((page - 1) * paginationAmount, page * paginationAmount))
+    setChangedUserData(data.slice((page - 1) * paginationAmount, page * paginationAmount))
     setPage(page);
   };
 
   return (
       <section className={classes.main}>
-      {jsonData.length !== 0 && <TableOfData elementFromOurData={changedUserData} /> }
+      {jsonData.length !== 0 &&
+      <>
+       <TableOfData elementFromOurData={changedUserData} />
+       <Pagination className={classes.paginationBox} value={page} onChange={setPageHandler} total={data.length / paginationAmount} />
+      </>}
       {jsonData.length === 0 &&  (<Box style={{height: "80vh",display:'flex', alignItems:'center', justifyContent:'center'}}><Loader /></Box>)}
-    
-       <Pagination className={classes.paginationBox} value={page} onChange={setPageHandler} total={jsonData.length / paginationAmount} />
     
       </section>
   );

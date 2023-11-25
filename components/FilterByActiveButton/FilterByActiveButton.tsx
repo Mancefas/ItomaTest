@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { useUserDataContext } from "../../context/UsersDataContext";
 import { Button } from "@mantine/core";
 
 type FilterByActiveButtonProps = {};
 
 const FilterByActiveButton: React.FC<FilterByActiveButtonProps>  = () => {
-    const { setChangedUserData, changedUserData } = useUserDataContext();
+    const { jsonData, setChangedUserData } = useUserDataContext();
+    const [filterActive, setFilterActive] = useState<boolean>(true);
 
      // sort (but its more filter) by is active or not
 
      const filterByActiveHandler = () => {
-        setChangedUserData(changedUserData.filter((item) => item.is_active))
+        setChangedUserData(jsonData.filter((item) => filterActive ? item.is_active : !item.is_active ));
+        setFilterActive((currentState) =>  !currentState);
      }   
 
   return (
-    <Button onClick={filterByActiveHandler}>FilterByActiveButton</Button>
+    <Button onClick={filterByActiveHandler}>{`Filter ${filterActive ? '✅' : '❌'}`}</Button>
   )
 }
 

@@ -4,11 +4,11 @@ import { Button } from "@mantine/core";
 type SortByBirthDateProps = {};
 
 const SortByBirthDate: React.FC<SortByBirthDateProps>  = () => {
-    const { jsonData, setChangedUserData, changedUserData } = useUserDataContext();
+    const { jsonData, setChangedUserData } = useUserDataContext();
 
      const SortByBirthDateHandler = () => {
         // copying data to get rerender
-        const dataCopy = [...changedUserData];
+        const dataCopy = [...jsonData];
         const sortedData = dataCopy.sort((a, b) => {
             if (a.profile.date_of_birth < b.profile.date_of_birth) {
                 return -1;
