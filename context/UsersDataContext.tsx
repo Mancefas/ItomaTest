@@ -10,6 +10,8 @@ type UserDataContext = {
   setChangedUserData: (data: User[]) => void;
   paginatedData: User[];
   setPaginatedData: (data: User[]) => void;
+  checked: boolean;
+  setChecked: (data: boolean) => void;
 };
 
 export const UserDataContext = createContext<UserDataContext>(
@@ -24,6 +26,7 @@ export const UserDataContextProvider = ({
   const [jsonData, setJsonData] = useState<User[]>([]);
   const [changedUserData, setChangedUserData] = useState<User[]>([]);
   const [paginatedData, setPaginatedData] = useState<User[]>([]);
+  const [checked, setChecked] = useState(false);
 
   const UserDataContextStore = {
     jsonData,
@@ -31,7 +34,9 @@ export const UserDataContextProvider = ({
     changedUserData,
     setChangedUserData,
     paginatedData,
-    setPaginatedData
+    setPaginatedData,
+    checked,
+    setChecked
   };
 
   return (

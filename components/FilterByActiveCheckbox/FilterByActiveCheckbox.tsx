@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "@mantine/core";
 
 import { useUserDataContext } from "../../context/UsersDataContext";
@@ -6,7 +6,7 @@ import { useUserDataContext } from "../../context/UsersDataContext";
 type FilterByActiveCheckboxProps = {};
 
 const FilterByActiveCheckbox: React.FC<FilterByActiveCheckboxProps> = () => {
-  const { jsonData, setChangedUserData } = useUserDataContext();
+  const { jsonData, setChangedUserData, checked, setChecked } = useUserDataContext();
 
   const filterByActiveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.currentTarget.checked) {
@@ -16,7 +16,7 @@ const FilterByActiveCheckbox: React.FC<FilterByActiveCheckboxProps> = () => {
     }
     setChecked(event.currentTarget.checked);
   };
-  const [checked, setChecked] = useState(false);
+  
   return (
     <Checkbox 
       checked={checked} 
