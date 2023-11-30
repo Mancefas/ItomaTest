@@ -6,7 +6,7 @@ type FilterByLastNameProps = {
 
 const RemoveButton: React.FC<FilterByLastNameProps> = ({ setState }) => {
   return (
-    <Button onClick={() => setState(false)} variant="transparent">
+    <Button p="0" onClick={() => setState(false)} variant="transparent">
       ⛔
     </Button>
   );
