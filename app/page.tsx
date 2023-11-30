@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Pagination, Loader, Box } from "@mantine/core";
+import { Pagination, Loader, Box, Flex } from "@mantine/core";
 
 import { TableOfData } from "../components/TableOfData/TableOfData";
+import FilterByName from "../components/FilterByName/FilterByName";
 import { useUserDataContext } from "../context/UsersDataContext";
 
 import classes from "./page.module.css";
 import data from "../store/user_data.json";
+import InitialDataButton from "../components/InitialDataButton/InitialDataButton";
 
 export default function HomePage() {
   const paginationAmount = 10;
@@ -40,6 +42,10 @@ export default function HomePage() {
     <section className={classes.main}>
       {jsonData.length !== 0 && (
         <>
+          <Flex p='lg' justify='space-between'>
+            <FilterByName />
+            <InitialDataButton />
+          </Flex>
           <TableOfData elementFromOurData={paginatedData} />
           <Pagination
             className={classes.paginationBox}

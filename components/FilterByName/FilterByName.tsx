@@ -15,7 +15,11 @@ const FilterByName: React.FC<FilterByNameProps> = () => {
   };
 
   return (
-    <Input placeholder="Filter first or last name" onChange={FilterByNameHandler} />
+    <Input 
+    placeholder="Filter first or last name" 
+    onChange={FilterByNameHandler} 
+    variant="filled" size="md" radius="md" 
+    />
   );
 };
 

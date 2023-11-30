@@ -26,10 +26,9 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
 
       const sortValue = sortAsc ? -1 : 1;
 
-      if (a.profile[sortName] < b.profile[sortName]) {
+      if (a.profile[sortName].toLocaleLowerCase() < b.profile[sortName].toLocaleLowerCase()) {
         return sortValue;
-      } else if (a.profile[sortName] > b.profile[sortName]) {
-        // does not sort correctly if only sortValue (need -sortedValue)
+      } else if (a.profile[sortName].toLocaleLowerCase() > b.profile[sortName].toLocaleLowerCase()) {
         return -sortValue;
       } else {
         return 0;
