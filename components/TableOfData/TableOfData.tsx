@@ -26,7 +26,7 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
       <Table.Td>{element.profile.last_name}</Table.Td>
       {showingEmail && (
         <Table.Td>
-          <a href="mailto: {element.email }">{element.email}</a>
+          <a href={`mailto:${element.email}`}>{element.email}</a>
         </Table.Td>
       )}
       <Table.Td>{element.profile.date_of_birth}</Table.Td>
