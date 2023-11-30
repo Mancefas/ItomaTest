@@ -39,7 +39,6 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
             <Stack>
               First name
               <SortButton sortBy="first_name" />
-              <FilterByName filterBy="first_name" />
             </Stack>
           </Table.Th>
 
@@ -47,7 +46,6 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
             <Stack>
               Last name
               <SortButton sortBy="last_name" />
-              <FilterByName filterBy="last_name" />
             </Stack>
           </Table.Th>
 
