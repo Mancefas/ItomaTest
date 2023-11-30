@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useUserDataContext } from "../../context/UsersDataContext";
 import { Button } from "@mantine/core";
 
@@ -8,7 +9,9 @@ type SortButtonProps = {
 };
 
 const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
-  const { jsonData, setChangedUserData } = useUserDataContext();
+  const { changedUserData, setChangedUserData } = useUserDataContext();
+  const [sortAsc, setSortAsc] = useState<boolean>(true);
+
   const sortName =
     sortBy === "birthday"
       ? "date_of_birth"
@@ -18,21 +21,32 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
 
   const SortButtonHandler = () => {
     // copying data to get rerender
-    const dataCopy = [...jsonData];
+    const dataCopy = [...changedUserData];
     const sortedData = dataCopy.sort((a, b) => {
-      if (a.profile[sortName] < b.profile[sortName]) {
-        return -1;
+      const sortValue = sortAsc ? -1 : 1;
+
+      if (
+        a.profile[sortName].toLocaleLowerCase() <
+        b.profile[sortName].toLocaleLowerCase()
+      ) {
+        return sortValue;
+      } else if (
+        a.profile[sortName].toLocaleLowerCase() >
+        b.profile[sortName].toLocaleLowerCase()
+      ) {
+        return -sortValue;
+      } else {
+        return 0;
       }
-      if (a.profile[sortName] > b.profile[sortName]) {
-        return 1;
-      }
-      return 0;
     });
 
     setChangedUserData(sortedData);
+    setSortAsc((currentValue) => !currentValue);
   };
 
-  return <Button onClick={SortButtonHandler}>Sort</Button>;
+  return (
+    <Button onClick={SortButtonHandler}>Sort {sortAsc ? "🔽" : "🔼"}</Button>
+  );
 };
 
 export default SortButton;
