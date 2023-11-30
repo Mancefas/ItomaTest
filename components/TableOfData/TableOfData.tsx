@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { Table, Stack } from "@mantine/core";
 import { User } from "../../types/types";
+import FilterByName from "../FilterByNameButton/FilterByNameButton";
 import FilterByActiveButton from "../FilterByActiveButton/FilterByActiveButton";
-import SortByBirthDate from "../SortByBirthDate/SortByBirthDate";
-import SortByFirstName from "../SortByFirstName/SortByFirstName";
-import SortByLastName from "../SortByLastName/SortByLastName";
-import FilterByFirstName from "../FilterByFirstName/FilterByFirstName";
-import FilterByLastName from "../FilterByLastName/FilterByLastName";
+import SortButton from "../SortButton/SortButton";
+import RemoveButton from "../RemoveButton/RemoveButton";
 
 import classes from "./TableOfData.module.css";
-import RemoveButton from "../RemoveButton/RemoveButton";
 
 type UserTableItemProps = {
   elementFromOurData: User[];
@@ -47,16 +44,16 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
           <Table.Th>
             <Stack>
               First name
-              <SortByFirstName />
-              <FilterByFirstName />
+              <SortButton sortBy="first_name" />
+              <FilterByName filterBy="first_name" />
             </Stack>
           </Table.Th>
 
           <Table.Th>
             <Stack>
               Last name
-              <SortByLastName />
-              <FilterByLastName />
+              <SortButton sortBy="last_name" />
+              <FilterByName filterBy="last_name" />
             </Stack>
           </Table.Th>
 
@@ -72,7 +69,7 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
           <Table.Th>
             <Stack>
               Birthday
-              <SortByBirthDate />
+              <SortButton sortBy="birthday" />
             </Stack>
           </Table.Th>
 
