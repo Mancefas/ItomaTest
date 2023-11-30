@@ -13,8 +13,14 @@ import InitialDataButton from "../components/InitialDataButton/InitialDataButton
 
 export default function HomePage() {
   const paginationAmount = 10;
-  const { jsonData, setJsonData, changedUserData, setChangedUserData, paginatedData, setPaginatedData } =
-    useUserDataContext();
+  const {
+    jsonData,
+    setJsonData,
+    changedUserData,
+    setChangedUserData,
+    paginatedData,
+    setPaginatedData,
+  } = useUserDataContext();
   const [page, setPage] = useState<number>(1);
 
   // setting initial data
@@ -26,14 +32,20 @@ export default function HomePage() {
   // paginating data if it is changed
   useEffect(() => {
     setPaginatedData(
-      changedUserData.slice((page - 1) * paginationAmount, page * paginationAmount),
+      changedUserData.slice(
+        (page - 1) * paginationAmount,
+        page * paginationAmount,
+      ),
     );
-  }, [changedUserData])
+  }, [changedUserData]);
 
   // pagination data handler after button press
   const setPageHandler = (page: number) => {
     setPaginatedData(
-      changedUserData.slice((page - 1) * paginationAmount, page * paginationAmount),
+      changedUserData.slice(
+        (page - 1) * paginationAmount,
+        page * paginationAmount,
+      ),
     );
     setPage(page);
   };
@@ -42,7 +54,7 @@ export default function HomePage() {
     <section className={classes.main}>
       {jsonData.length !== 0 && (
         <>
-          <Flex p='lg' justify='space-between'>
+          <Flex p="lg" justify="space-between">
             <FilterByName />
             <InitialDataButton />
           </Flex>

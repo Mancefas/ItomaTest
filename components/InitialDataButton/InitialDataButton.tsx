@@ -6,13 +6,17 @@ type InitialDataButtonProps = {};
 
 const InitialDataButton: React.FC<InitialDataButtonProps> = () => {
   const { jsonData, setChangedUserData, setChecked } = useUserDataContext();
-  
+
   const checkHandler = () => {
-    setChecked(false)
-    setChangedUserData(jsonData)
+    setChecked(false);
+    setChangedUserData(jsonData);
   };
 
-  return (<Button color="violet" onClick={checkHandler}>Initial data</Button>)
+  return (
+    <Button color="violet" onClick={checkHandler}>
+      Initial data
+    </Button>
+  );
 };
 
 export default InitialDataButton;

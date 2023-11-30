@@ -16,19 +16,24 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
     sortBy === "birthday"
       ? "date_of_birth"
       : sortBy === "first_name"
-      ? "first_name"
-      : "last_name";
+        ? "first_name"
+        : "last_name";
 
   const SortButtonHandler = () => {
     // copying data to get rerender
     const dataCopy = [...changedUserData];
     const sortedData = dataCopy.sort((a, b) => {
-
       const sortValue = sortAsc ? -1 : 1;
 
-      if (a.profile[sortName].toLocaleLowerCase() < b.profile[sortName].toLocaleLowerCase()) {
+      if (
+        a.profile[sortName].toLocaleLowerCase() <
+        b.profile[sortName].toLocaleLowerCase()
+      ) {
         return sortValue;
-      } else if (a.profile[sortName].toLocaleLowerCase() > b.profile[sortName].toLocaleLowerCase()) {
+      } else if (
+        a.profile[sortName].toLocaleLowerCase() >
+        b.profile[sortName].toLocaleLowerCase()
+      ) {
         return -sortValue;
       } else {
         return 0;
@@ -36,13 +41,11 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
     });
 
     setChangedUserData(sortedData);
-    setSortAsc(currentValue => !currentValue);
+    setSortAsc((currentValue) => !currentValue);
   };
 
   return (
-    <Button onClick={SortButtonHandler}>
-      Sort {sortAsc ? "🔽" : "🔼"}
-    </Button>
+    <Button onClick={SortButtonHandler}>Sort {sortAsc ? "🔽" : "🔼"}</Button>
   );
 };
 

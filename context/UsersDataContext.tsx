@@ -36,7 +36,7 @@ export const UserDataContextProvider = ({
     paginatedData,
     setPaginatedData,
     checked,
-    setChecked
+    setChecked,
   };
 
   return (
