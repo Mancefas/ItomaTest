@@ -9,7 +9,7 @@ type SortButtonProps = {
 };
 
 const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
-  const { jsonData, setChangedUserData } = useUserDataContext();
+  const { changedUserData, setChangedUserData } = useUserDataContext();
   const [sortAsc, setSortAsc] = useState<boolean>(true);
 
   const sortName =
@@ -21,7 +21,7 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
 
   const SortButtonHandler = () => {
     // copying data to get rerender
-    const dataCopy = [...jsonData];
+    const dataCopy = [...changedUserData];
     const sortedData = dataCopy.sort((a, b) => {
 
       const sortValue = sortAsc ? -1 : 1;
@@ -29,7 +29,7 @@ const SortButton: React.FC<SortButtonProps> = ({ sortBy }) => {
       if (a.profile[sortName] < b.profile[sortName]) {
         return sortValue;
       } else if (a.profile[sortName] > b.profile[sortName]) {
-        // does not sort correctly if only sortValue
+        // does not sort correctly if only sortValue (need -sortedValue)
         return -sortValue;
       } else {
         return 0;

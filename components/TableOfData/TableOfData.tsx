@@ -51,12 +51,10 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
             </Stack>
           </Table.Th>
 
-          
-            <Table.Th>
-                Email
-            </Table.Th>
+          <Table.Th>
+              Email
+          </Table.Th>
       
-
           <Table.Th>
             <Stack>
               Birthday
@@ -64,17 +62,13 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
             </Stack>
           </Table.Th>
 
+          <Table.Th>
+            Company
+          </Table.Th>
 
-            <Table.Th>
-              Company
-            </Table.Th>
-
-
-
-            <Table.Th>
-              Address
-            </Table.Th>
-
+          <Table.Th>
+            Address
+          </Table.Th>
 
           <Table.Th>
             <Stack>
@@ -83,10 +77,9 @@ export const TableOfData: React.FC<UserTableItemProps> = ({
             </Stack>
           </Table.Th>
 
-
-            <Table.Th>
-                Notes
-            </Table.Th>
+          <Table.Th>
+              Notes
+          </Table.Th>
 
         </Table.Tr>
       </Table.Thead>

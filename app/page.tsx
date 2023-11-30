@@ -11,27 +11,27 @@ import data from "../store/user_data.json";
 
 export default function HomePage() {
   const paginationAmount = 10;
-  const { jsonData, setJsonData, changedUserData, setChangedUserData } =
+  const { jsonData, setJsonData, changedUserData, setChangedUserData, paginatedData, setPaginatedData } =
     useUserDataContext();
   const [page, setPage] = useState<number>(1);
 
-  //setting initial data
+  // setting initial data
   useEffect(() => {
-    setJsonData(
-      data.slice((page - 1) * paginationAmount, page * paginationAmount),
-    );
-    setChangedUserData(
-      data.slice((page - 1) * paginationAmount, page * paginationAmount),
-    );
+    setJsonData(data);
+    setChangedUserData(data);
   }, []);
 
-  // Paginating data
-  const setPageHandler = (page: number) => {
-    setJsonData(
-      data.slice((page - 1) * paginationAmount, page * paginationAmount),
+  // paginating data if it is changed
+  useEffect(() => {
+    setPaginatedData(
+      changedUserData.slice((page - 1) * paginationAmount, page * paginationAmount),
     );
-    setChangedUserData(
-      data.slice((page - 1) * paginationAmount, page * paginationAmount),
+  }, [changedUserData])
+
+  // pagination data handler after button press
+  const setPageHandler = (page: number) => {
+    setPaginatedData(
+      changedUserData.slice((page - 1) * paginationAmount, page * paginationAmount),
     );
     setPage(page);
   };
@@ -40,12 +40,12 @@ export default function HomePage() {
     <section className={classes.main}>
       {jsonData.length !== 0 && (
         <>
-          <TableOfData elementFromOurData={changedUserData} />
+          <TableOfData elementFromOurData={paginatedData} />
           <Pagination
             className={classes.paginationBox}
             value={page}
             onChange={setPageHandler}
-            total={data.length / paginationAmount}
+            total={changedUserData.length / paginationAmount}
           />
         </>
       )}
