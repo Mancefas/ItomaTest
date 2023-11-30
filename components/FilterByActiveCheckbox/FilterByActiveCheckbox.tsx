@@ -3,9 +3,9 @@ import { Checkbox } from "@mantine/core";
 
 import { useUserDataContext } from "../../context/UsersDataContext";
 
-type FilterByActiveButtonProps = {};
+type FilterByActiveCheckboxProps = {};
 
-const FilterByActiveButton: React.FC<FilterByActiveButtonProps> = () => {
+const FilterByActiveCheckbox: React.FC<FilterByActiveCheckboxProps> = () => {
   const { jsonData, setChangedUserData } = useUserDataContext();
 
   const filterByActiveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,4 +26,4 @@ const FilterByActiveButton: React.FC<FilterByActiveButtonProps> = () => {
 
 };
 
-export default FilterByActiveButton;
+export default FilterByActiveCheckbox;

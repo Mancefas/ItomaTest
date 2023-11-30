@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Table, Stack, Flex } from "@mantine/core";
 
-import FilterByActiveButton from "../FilterByActiveButton/FilterByActiveButton";
+import FilterByActiveButton from "../FilterByActiveCheckbox/FilterByActiveCheckbox";
 import SortButton from "../SortButton/SortButton";
 import RemoveButton from "../RemoveButton/RemoveButton";
 
